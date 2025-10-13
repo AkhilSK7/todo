@@ -22,9 +22,10 @@ def home(request):
     return render(request,"index.html")
 
 def viewtask(request):
-    tasks=Addtask.objects.all()
-    context={'tasks':tasks}
-    return render(request,"viewtask.html",context)
+    if request.method=='GET':
+        tasks=Addtask.objects.all()
+        context={'tasks':tasks}
+        return render(request,"viewtask.html",context)
 
 def donetask(request,task_id):
     if request.method=='POST':
@@ -39,3 +40,12 @@ def deletetask(request,task_id):
         t.delete()
         return redirect('viewtask')
 
+def filtertask(request):
+    if request.method=='GET':
+        selected_date=request.GET.get('date')
+        tasks=[]
+        if selected_date:
+            tasks=Addtask.objects.filter(deadline=selected_date)
+
+        context={'tasks':tasks,'selected_date':selected_date}
+        return render(request,'viewtask.html',context)
