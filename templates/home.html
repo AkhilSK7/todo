@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container w-75 d-flex justify-content-center shadow p-3 mb-5 rounded box" style="margin-top:10%">
+    <h1 class="text-center mt-4">Because remembering things is overrated.</h1>
+<a class="btn  m-5" href="{% url 'users:login' %}" >LOGIN</a>
+<a class="btn  m-5" href="{% url 'users:register' %}" >SIGNUP</a>
+</div>
+{% endblock %}

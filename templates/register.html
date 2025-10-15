@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
 {% block content %}
 <div class="container w-75 d-flex justify-content-center shadow p-3 mb-5 rounded box" style="margin-top:10%">
-<a class="btn  m-5" href="{% url 'app1:addtask' %}" >ADD TASK</a>
-<a class="btn  m-5" href="{% url 'app1:viewtask' %}" >VIEW TASKS</a>
+    <form method="post">
+        {% csrf_token %}
+        {{form|crispy}}
+        <input type="submit" class="btn btn-primary">
+    </form>
 </div>
+
 {% endblock %}

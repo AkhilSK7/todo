@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
-
+{% block button %}
+<a href="{% url 'app1:home' %}" >
+    <i class="fa-solid fa-house" style="color:#344F1F;"></i>
+</a>
+{% endblock %}
 
 {% block content %}
   {% if form %}
@@ -13,7 +17,8 @@
     </div>
     {% else %}
    <div class="container w-50 border border-2  mt-5 d-flex justify-content-center align-items-center box" style="margin-left:25%; height:500px">
-    <a href="{% url 'addtask' %}" class="btn  ">ADD ANOTHER TASK</a>
+    <a href="{% url 'app1:addtask' %}" class="btn  ">ADD ANOTHER TASK</a>
+
    </div>
     {% endif %}
 {% endblock %}
