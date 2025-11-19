@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% block button %}
 <a href="{% url 'app1:home' %}" >
     <i class="fa-solid fa-house" style="color:#344F1F;"></i>
@@ -6,12 +7,13 @@
 {% endblock %}
 
 {% block content %}
+<div class="d-flex justify-content-center align-items-center min-vh-100">
   {% if form %}
-  <div class="container w-50 border border-2  mt-5 box " style="margin-left:25%; height:500px">
+  <div class=" border border-2  w-100 m-5 p-3 box " >
     <h1 class="text-center " >ADD TASK</h1>
-    <form method='post' class="mx-auto  w-50" >
+    <form method='post' >
         {% csrf_token %}
-        {{form.as_p}}
+        {{form|crispy}}
         <input type="submit" class="btn ">
         </form>
     </div>
@@ -21,4 +23,5 @@
 
    </div>
     {% endif %}
+    </div>
 {% endblock %}
